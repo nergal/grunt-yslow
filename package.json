@@ -1,7 +1,7 @@
 {
   "name": "grunt-yslow",
   "description": "Set a threshold for page weight, page load, and analyse your webpage performance.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "http://andyshora.com/grunt-yslow.html",
   "author": {
     "name": "Andy Shora",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/andyshora/grunt-yslow.git"
+    "url": "git://github.com/nergal/grunt-yslow.git"
   },
   "bugs": {
-    "url": "https://github.com/andyshora/grunt-yslow/issues"
+    "url": "https://github.com/nergal/grunt-yslow/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/andyshora/grunt-yslow/blob/master/LICENSE-MIT"
+      "url": "https://github.com/nergal/grunt-yslow/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
@@ -31,10 +31,11 @@
     "grunt-lib-phantomjs": "~0.3.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "^1.0.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
@@ -51,6 +52,10 @@
     {
       "name": "Chris Northwood",
       "url": "http://www.pling.org.uk/"
+    },
+    {
+      "name": "Artem Polyukhovich",
+      "email": "me@2mio.com"
     }
   ],
   "readmeFilename": "README.md"

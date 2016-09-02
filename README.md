@@ -13,17 +13,15 @@ Then add this line to your project's `grunt.js` gruntfile:
 ```javascript
 grunt.loadNpmTasks('grunt-yslow');
 ```
-
-Also make sure that `phantomjs` is in the `$PATH`.  You can add
-`./node_modules/grunt-yslow/node_modules/grunt-lib-phantomjs/node_modules/phantomjs` or
-do a `$ npm install --global phantomjs`
-
 ---
 
 ##Config
 All config must be specified in your Gruntfile.js under the task name yslow.
 
 ###Options
+- **ci** (object) - An object specifying an options for CI build.
+    - **format** (string) - Format for storing reports. Acceptable values is "junit", "tap", "xml" or "json".
+    - **reportPath** (string) - Path for storing reports.
 - **thresholds** (object) - An object specifying the global thresholds to test against. These can be overridden by higher specificity against inside the files section below.
     - **weight** (number) - The maximum page weight allowed (kb).
     - **speed** (number) - The maximum load time of the page allowed (ms).
@@ -35,9 +33,11 @@ All config must be specified in your Gruntfile.js under the task name yslow.
     - **viewport** (string) - the size of the viewport in the form *WxH*, where W is the width and H is the height
     - **headers** (object) - an object where keys are the header names and values are the values of additional headers to add to the request
 - **files** (object) - An array of objects, specifying a seperate page to test. Generally this is wrapped inside a named sub-task, such as the 'pages' task in the example below.
+    - **baseUrl** (string) - Base url for test.
     - **src** (string) - The absolute url to test.
     - **thresholds** (object) - Any overrides to the global thresholds for this page.
     - **yslowOptions** (object) - Any overrides to the global Yslow Options for this page.
+    - **ci** (object) - Any overrides to the global CI options for this page.
 
 ---
 
@@ -51,6 +51,10 @@ yslow: {
       speed: 1000,
       score: 80,
       requests: 15
+    },
+    ci: {
+        format: 'junit',
+        reportPath: 'test/performance'
     }
   },
   pages: {
