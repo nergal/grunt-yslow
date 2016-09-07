@@ -85,28 +85,23 @@ module.exports = function(grunt) {
                 if (phantom['path']) {
                   cmd.push(phantom['path']);
                 } else {
-                  l.debug('Phantomjs path from required module is empty');
+                  throw 'Phantomjs path from required module is empty';
                 }
             } catch (e) {
-                l.debug('Unable to require phantomjs, looking in node_modules');
+                l.error(e);
                 try {
                     // Look down if that fails
                     phantom = require(path.join(__dirname, '..', 'node_modules', 'phantomjs'));
                     if (phantom['path']) {
                       cmd.push(phantom.path);
                     } else {
-                      l.debug('Phantomjs path from included dependency is empty');
+                      throw 'Phantomjs path from included dependency is empty';
                     }
                 } catch (e) {
-                    l.debug('Unable to find phantomjs in node_modules, adding trying to use system-wide call');
+                    l.error(e);
                     // This should never happen since 'grunt-lib-phantomjs' would have enforced one of the above
                     cmd.push('phantomjs');
                 }
-            }
-
-            if (!cmd.length) {
-              l.error("Unable to find phantomjs executable");
-              return done(false);
             }
 
             // creates a seperate scope for child variable
