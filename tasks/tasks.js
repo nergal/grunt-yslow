@@ -91,7 +91,7 @@ module.exports = function(grunt) {
                 l.error(e);
                 try {
                     // Look down if that fails
-                    phantom = require(path.join(__dirname, '..', 'node_modules', 'phantomjs'));
+                    phantom = require(path.join(__dirname, '..', '..', '..', 'node_modules', 'phantomjs'));
                     if (phantom['path']) {
                       cmd.push(phantom.path);
                     } else {
